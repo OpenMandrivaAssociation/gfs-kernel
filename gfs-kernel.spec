@@ -16,7 +16,6 @@ License: GPL
 Group: System
 #Url: 
 Buildrequires: dlm-kernel, iddev, gulm
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 requires: kernel-source
 
 %description
