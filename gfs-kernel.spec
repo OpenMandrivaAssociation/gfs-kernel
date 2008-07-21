@@ -1,7 +1,7 @@
 %define name gfs-kernel
 %define version 2.6.9
 %define pre cvs
-%define release  %mkrel 2
+%define release  %mkrel 3
 %define rkernel %(/bin/bash ~/rpm/SOURCES/get_version.sh)
 
 Summary: gfs-kernel The Global File System kernel modules
