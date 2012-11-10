@@ -1,0 +1,45 @@
+--- configure	2005-03-29 22:11:42.000000000 +0000
++++ configure.patched	2005-04-11 08:34:09.000000000 +0000
+@@ -30,6 +30,7 @@
+ 	mandir  => \$mandir,
+ 	prefix => \$prefix,
+ 	sbindir => \$sbindir,
++	module_dir => \$module_dir,
+ 	verbose => \$verbose
+ );
+ 
+@@ -41,6 +42,7 @@
+ 		    'mandir=s',
+ 		    'prefix=s',
+ 		    'sbindir=s',
++		    'module_dir=s',
+ 		    'verbose');
+ 
+ if(!$err) {
+@@ -61,6 +63,7 @@
+   print "--mandir=\tthe base directory for man pages.  (Default: /usr/share/man)\n";
+   print "--prefix=\tthe base directory to install into.  (Default: /)\n";
+   print "--sbindir=\tthe base directory for system binaries.  (Default: /sbin)\n";
++  print "--module_dir=\tthe module directory to install insto. (Default: uname -r)\n";
+   print "--verbose\t\tVerbose output\n";
+   exit $ret;
+ }
+@@ -85,6 +88,9 @@
+ if (!$sbindir) {
+   $sbindir="${prefix}/sbin";
+ }
++if (!$module_dir) {
++    $module_dir= "/lib/modules/" . `uname -r`;
++}
+ 
+ 
+ open IFILE, "<make/defines.mk.input" or die "Can't redirect stdin";
+@@ -97,7 +103,7 @@
+     chomp;
+     if( $_ =~ /^#define\s*UTS_RELEASE\s*\"(.*)\"$/ ){
+       $kernel_version = $1;
+-      $module_dir = "${prefix}/lib/modules/$1/kernel";
++#      $module_dir = "${prefix}/lib/modules/$1/kernel";
+     }
+ }
+ 
