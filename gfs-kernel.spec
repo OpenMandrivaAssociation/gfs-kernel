@@ -15,6 +15,11 @@ Patch0: configure_kernel.patch
 License: GPL
 Group: System
 #Url: 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 Buildrequires: dlm-kernel, iddev, gulm
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 requires: kernel-source
